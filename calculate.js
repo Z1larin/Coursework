@@ -82,7 +82,7 @@ windowBlocks.forEach((windowBlock, index) => {
 
         if(index == 0){
           const typeWindows = document.querySelector('.type-windows')
-            typeWindows.src = "/img/one-window.svg"
+            typeWindows.src = "./img/one-window.svg"
             titleWindows.textContent = 'Одностворчатое окно';
             fullprice += 6600
             textFullprice.textContent = `${fullprice} руб`
@@ -101,7 +101,7 @@ windowBlocks.forEach((windowBlock, index) => {
         }
         if(index == 1){
             const typeWindows = document.querySelector('.type-windows')
-            typeWindows.src = "/img/two-window.svg"
+            typeWindows.src = "./img/two-window.svg"
             titleWindows.textContent = 'Двухстворчатое окно'
             fullprice += 12900
             textFullprice.textContent = `${fullprice} руб`
@@ -120,7 +120,7 @@ windowBlocks.forEach((windowBlock, index) => {
         }
         if(index == 2){
           const typeWindows = document.querySelector('.type-windows')
-            typeWindows.src = "/img/three-windows.svg"
+            typeWindows.src = "./img/three-windows.svg"
             titleWindows.textContent = 'Трёхстворчатое окно'
             fullprice += 18720
             textFullprice.textContent = `${fullprice} руб`
@@ -139,7 +139,7 @@ windowBlocks.forEach((windowBlock, index) => {
         }
         if(index == 3){
           const typeWindows = document.querySelector('.type-windows')
-            typeWindows.src = "/img/arch-windows.svg"
+            typeWindows.src = "./img/arch-windows.svg"
             titleWindows.textContent = 'Арочное окно'
             fullprice += 23800
             textFullprice.textContent = `${fullprice} руб`
@@ -158,7 +158,7 @@ windowBlocks.forEach((windowBlock, index) => {
         }
         if(index == 4){
           const typeWindows = document.querySelector('.type-windows')
-            typeWindows.src = "/img/balkon-windows.svg"
+            typeWindows.src = "./img/balkon-windows.svg"
             titleWindows.textContent = 'Балконный блок'
             fullprice += 21900
             textFullprice.textContent = `${fullprice} руб`

@@ -60,8 +60,8 @@ const changeImageSrc = () => {
   const image3 = document.querySelector(".photo3");
   
   if (window.innerWidth < 375) {
-    image1.src = "/img/Group 27.jpg";
-    image2.src = "/img/Group 22.jpg";
-    image3.src = "/img/Group 23.jpg";
+    image1.src = "./img/Group 27.jpg";
+    image2.src = "./img/Group 22.jpg";
+    image3.src = "./img/Group 23.jpg";
   }
 }
