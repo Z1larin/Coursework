@@ -1,0 +1,407 @@
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+.container{
+    margin: 0 auto;
+    max-width: 1440px;
+}
+a{
+    text-decoration: none;
+}
+.arrow-left, .arrow-right{
+    width: 30px;
+}
+.header__logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.logo-text{
+    color: #0069B4;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-family: 'Krona One', sans-serif;
+    width: 119px;
+    flex-shrink: 0;
+    margin-left: 8px;
+}
+.wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px 0;
+}
+.nav {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+.nav-list .nav-item {
+    margin-right: 30px;
+}
+.nav-list{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #0069B4;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.nav-link:hover {
+    text-decoration: none;
+}
+.nav-link::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 3px; /* Высота полоски */
+    background-color: #0069B4; /* Цвет полоски */
+    transition: width 0.2s; /* Анимация для плавного появления полоски */
+}
+.nav-link:hover::after {
+    width: 100%; /* Растягиваем полоску на 100% ширины ссылки при наведении */
+}
+.menu-btn {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    z-index:2;
+    overflow: hidden;
+}
+.menu-btn span {
+    width: 30px;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #0069B4;
+    transition: all 0.5s;
+}
+.menu-btn span:nth-of-type(2) {
+    top: calc(50% - 5px);
+}
+.menu-btn span:nth-of-type(3) {
+    top: calc(50% + 5px);
+}
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+  background: #FFEFBA;
+    transform: translateX(-100%);
+    transition: transform 0.5s; 
+    z-index: 1;
+}
+.menu.active {
+    transform: translateX(0);
+}
+.menu li {
+    list-style-type: none;
+}
+.menu-btn.active span:nth-of-type(1) {
+    display: none;
+}
+  .menu-btn.active span:nth-of-type(2) {
+    top: 50%;
+    transform: translate(-50%, 0%) rotate(45deg);  
+}
+  .menu-btn.active span:nth-of-type(3) {
+    top: 50%;
+    transform: translate(-50%, 0%) rotate(-45deg); 
+}
+.menu-btn{
+    display: none;
+}
+.menu{
+    display: none;
+}
+main{
+    margin-top: 30px;
+}
+.faq-title{
+    color: #0069B4;
+    text-align: center;
+    font-size: 35px;
+    text-transform: uppercase;
+}
+.accordion{
+    margin-top: 30px;
+}
+.accordion .accordion-item {
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .accordion .accordion-item button[aria-expanded=true] {
+    border-bottom: 1px solid #0069B4;
+  }
+  .accordion button {
+    position: relative;
+    display: block;
+    text-align: left;
+    width: 100%;
+    padding: 1em 0;
+    color: #7288a2;
+    font-size: 1.45rem;
+    font-weight: 400;
+    border: none;
+    background: none;
+    outline: none;
+  }
+  .accordion button:hover, .accordion button:focus {
+    cursor: pointer;
+    color: #0069B4;
+  }
+  .accordion button:hover::after, .accordion button:focus::after {
+    cursor: pointer;
+    color: #0069B4;
+    border: 1px solid #0069B4;
+  }
+  .accordion button .accordion-title {
+    padding: 1em 1.5em 1em 0;
+  }
+  .accordion button .icon {
+    display: inline-block;
+    position: absolute;
+    top: 18px;
+    right: 0;
+    width: 22px;
+    height: 22px;
+    border: 1px solid;
+    border-radius: 22px;
+  }
+  .accordion button .icon::before {
+    display: block;
+    position: absolute;
+    content: "";
+    top: 9px;
+    left: 5px;
+    width: 10px;
+    height: 2px;
+    background: currentColor;
+  }
+  .accordion button .icon::after {
+    display: block;
+    position: absolute;
+    content: "";
+    top: 5px;
+    left: 9px;
+    width: 2px;
+    height: 10px;
+    background: currentColor;
+  }
+  .accordion button[aria-expanded=true] {
+    color: #0069B4;
+  }
+  .accordion button[aria-expanded=true] .icon::after {
+    width: 0;
+  }
+  .accordion button[aria-expanded=true] + .accordion-content {
+    opacity: 1;
+    max-height: 9em;
+    transition: all 200ms linear;
+    will-change: opacity, max-height;
+  }
+  .accordion .accordion-content {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 200ms linear, max-height 200ms linear;
+    will-change: opacity, max-height;
+  }
+  .accordion .accordion-content p {
+    font-size: 1.45rem;
+    font-weight: 300;
+    margin: 1.45rem 0;
+  }
+  footer{
+    margin: 0 auto;
+    max-width: 1440px;
+    background-color: #43B0ED;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 46px;
+}
+.footer-block {
+    width: 48%; /* Чтобы сделать два блока внутри футера */
+}
+.footer-block p {
+    color: white;
+    font-size: 15px;
+}
+.footer-block h2{
+    font-size: 35px;
+    margin-bottom: 10px;
+    color: white;
+}
+.footer-block p:nth-child(2) {
+    color: white;
+    font-size: 25px;
+    margin-top: 23px;
+}
+.footer-block p:nth-child(3) {
+    color: white;
+    font-size: 20px;
+    margin-top: 70px;
+}
+.footer-block p:nth-child(4) {
+    color: white;
+    font-size: 40px;
+    margin-top: 34px;
+}
+.footer-block p:nth-child(5) {
+    color: white;
+    font-size: 17px;
+    margin-top: 23px;
+}
+.footer-input{
+    width: 100%;
+    height: 66px;
+    flex-shrink: 0;
+    border: 1px solid #FFF;
+    background: #0094E7;
+    color: white;
+    outline: 0;
+    outline-offset: 0;
+    font-size: 17px;
+    padding-left: 15px;
+}
+/* .footer-input::placeholder{
+    padding-left: 15px;
+} */
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form input:nth-child(2){
+    margin-top: 27px;
+}
+.form input:nth-child(3){
+    margin-top: 27px;
+}
+input:active{
+    outline: 0;
+}
+input::placeholder{
+    color: white;
+}
+
+.get-advice{
+    width: 331px;
+    height: 60px;
+    flex-shrink: 0;
+    padding: 10px 20px;
+    background-color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 21px;
+}
+.custom-select-hidden{
+    display: none;
+}
+@media screen and (max-width: 1024px) {
+  .nav-list{
+     flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .nav-list .nav-item {
+      margin-right: 10px; /* Уменьшаем отступ между элементами меню */
+  }
+  .nav-link {
+      font-size: 20px; /* Уменьшаем размер шрифта для более маленьких экранов */
+  }
+  .nav-link::after {
+      height: 2px; /* Уменьшаем высоту полоски на маленьких экранах */
+  }
+  .accordion .accordion-content p{
+    font-size: 16px;
+  }
+  .accordion button{
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 522px) {
+  .nav{
+      display: none;
+  }
+  .menu-btn{
+      display: block;
+      margin-top: 30px
+  }
+  .menu{
+      display: block;
+  }
+  .nav-link{
+      font-size: 17px
+  }
+  .accordion .accordion-content p{
+    font-size: 13px;
+  }
+  .accordion button{
+    font-size: 13px;
+  }
+  .accordion button .icon {
+    display: none;
+  }
+
+  .accordion button .accordion-title {
+    padding-right: 40px;
+  }
+  footer{
+    flex-direction: column;
+  }
+  input{
+    width: 270px;
+  }
+  .footer-block p:nth-child(4) {
+    color: white;
+    font-size: 30px;
+    margin-top: 34px;
+    width: 270px;
+  }
+  .footer-block p{
+    width: 250px;
+  }
+  .footer-form{
+    margin-top: 10px;
+  }
+}
+@media screen and (max-width: 425px){
+    .footer-input{
+        width: 254px !important;
+    }
+    .get-advice{
+        width: auto;
+    }
+}
+
+
+
