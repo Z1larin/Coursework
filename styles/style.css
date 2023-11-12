@@ -249,7 +249,7 @@ button{
 h3 {
     font-size: 20px;
     color: #333;
-    margin: 10px 0;
+    margin: 23px;
 }
 
 p {
@@ -531,7 +531,7 @@ input::placeholder{
         font-size: 28px;
     }
     .about-us p {
-        font-size: 20px;
+        font-size: 23px;
     }
     .about-us-image img{
         display: none;
