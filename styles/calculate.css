@@ -171,7 +171,7 @@ header {
 .img-window{
     margin-left: 80px;
     margin-top: 37px;
-    width: 300px;
+    width: 150px;
     height: 200px;
 }
 .type-window{
@@ -479,6 +479,28 @@ input::placeholder{
 .error-text{
     display: none;
 }
+.get-document{
+    margin-top: 57px;
+    width: 636px;
+    height: 136px;
+    background-color: #43B0ED;
+    border-radius: 10px;
+    font-size: 30px;
+    border: none;
+    margin-left: 260px;
+    color: white;
+    cursor: pointer;
+}
+.height-input{
+    width: 292px;
+    height: 60px !important;
+    margin-top: auto;
+    padding-left: 15px;
+}
+.height-input[type=text]{
+    height:24px;
+    font-size: 15px;
+}
 @media screen and (max-width: 1024px) {
     .nav-list{
        flex-direction: column;
@@ -501,6 +523,11 @@ input::placeholder{
     }
     #sale{
         width: 90%;
+    }
+    .get-document{
+        margin-left: 115px;
+        width: 536px;
+        height: 100px;
     }
 }
 .number-sashes:not(:first-child){
@@ -638,6 +665,11 @@ input::placeholder{
     .additional_parameters {
         width: 400px;
         margin-left: 30px;
+    }
+    .get-document{
+        margin-left: 40px;
+        width: 250px;
+        height: 100px;
     }
 }
 @media screen and (max-width: 425px){

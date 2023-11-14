@@ -594,28 +594,53 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-const inputFields = document.querySelectorAll(".input");
+const widthInput = document.querySelector('.input');
+const heightInput = document.querySelector('.height-input');
+const error = document.querySelector('.error');
+const errorText = document.querySelectorAll('.error-text')
 
-// Для каждого найденного элемента добавляем обработчик ввода
-inputFields.forEach(inputField => {
-    inputField.addEventListener("input", () => {
-        let inputValue = Number(inputField.value);
-        console.log(typeof(inputValue));
-        const error = document.querySelector('.error')
-        const errorText = document.querySelectorAll('.error-text')
-        // if (inputValue > 4) {
-        //     inputValue = inputValue.slice(0, 4);
-        //     inputField.value = inputValue;
-        // }
-        if(inputValue <= 499){
-          error.style.display = "block"
-          errorText[0].style.display = "block"
-        }
-        else if(Number(inputValue[1]) <= 499){
-          error.style.display = "block"
-          errorText[1].style.display = "block"
-        }
-    });
+widthInput.addEventListener("keydown", (event) => {
+  if (event.key === '.' || event.keyCode === 190) {
+      event.preventDefault();
+  }
+});
+heightInput.addEventListener("keydown", (event) => {
+  if (event.key === '.' || event.keyCode === 190) {
+      event.preventDefault();
+  }
+});
+widthInput.addEventListener("input", () => {
+  let inputValue = widthInput.value;
+
+  if (Number(inputValue) > 499) {
+      inputValue = inputValue.slice(0, 4);
+      widthInput.value = inputValue;
+  }
+
+  if (Number(inputValue) <= 499) {
+      error.style.display = "block";
+      errorText[0].style.display = "block"
+  } else {
+      error.style.display = "none";
+      errorText[0].style.display = "none"
+  }
+});
+
+heightInput.addEventListener("input", () => {
+  let inputValue = heightInput.value;
+
+  if(Number(inputValue) > 499){
+    inputValue = inputValue.slice(0, 4);
+    heightInput.value = inputValue;
+  }
+  if (Number(inputValue) <= 499) {
+      error.style.display = "block";
+      errorText[1].style.display = "block"
+  }
+  else {
+      error.style.display = "none";
+      errorText[1].style.display = "none"
+  }
 });
 
 const updateFullPrice = () => {
