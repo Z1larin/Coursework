@@ -1,6 +1,29 @@
+const { PDFDocument, StandardFonts, rgb } = PDFLib
+
 const menuBtn = document.querySelector('.menu-btn');
 const menu = document.querySelector('.menu');
 const body = document.body;
+const widthInput = document.querySelector('.input');
+const heightInput = document.querySelector('.height-input');
+const error = document.querySelector('.error');
+const errorText = document.querySelectorAll('.error-text')
+const imgWindow = document.querySelector(".img-window");
+const mySelect = document.getElementById("mySelect");
+const mySelect2 = document.getElementById("mySelect2");
+const mySelect3 = document.getElementById("mySelect3");
+const mySelect4 = document.getElementById("mySelect4");
+const mySelect5 = document.getElementById("mySelect5");
+const mySelect6 = document.getElementById("mySelect6");
+const mySelect7 = document.getElementById("mySelect7");
+const mySelect8 = document.getElementById("mySelect8");
+const mySelect9 = document.getElementById("mySelect9");
+const mySelect10 = document.getElementById("mySelect10");
+const mySelect11 = document.getElementById("mySelect11");
+const mySelect12 = document.getElementById("mySelect12");
+const card = document.querySelectorAll('.number-sashes');
+const doubleGlassCheckbox = document.querySelector('input[value="DoubleGlazing"]');
+const secondCustomSelect = document.querySelector('.custom-select-hidden');
+const getDocumentPDF = document.querySelector('.get-document')
 
 const textFullprice = document.querySelector('.text-fullprice')
 
@@ -48,20 +71,6 @@ windowBlocks.forEach((windowBlock) => {
     });
 });
 
-const imgWindow = document.querySelector(".img-window");
-    const mySelect = document.getElementById("mySelect");
-    const mySelect2 = document.getElementById("mySelect2");
-    const mySelect3 = document.getElementById("mySelect3");
-    const mySelect4 = document.getElementById("mySelect4");
-    const mySelect5 = document.getElementById("mySelect5");
-    const mySelect6 = document.getElementById("mySelect6");
-    const mySelect7 = document.getElementById("mySelect7");
-    const mySelect8 = document.getElementById("mySelect8");
-    const mySelect9 = document.getElementById("mySelect9");
-    const mySelect10 = document.getElementById("mySelect10");
-    const mySelect11 = document.getElementById("mySelect11");
-    const mySelect12 = document.getElementById("mySelect12");
-    const card = document.querySelectorAll('.number-sashes');
 windowBlocks.forEach((windowBlock, index) => {
     windowBlock.addEventListener("click", () => {
         console.log(index);
@@ -593,45 +602,51 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-
-const widthInput = document.querySelector('.input');
-const heightInput = document.querySelector('.height-input');
-const error = document.querySelector('.error');
-const errorText = document.querySelectorAll('.error-text')
-
-widthInput.addEventListener("keydown", (event) => {
-  if (event.key === '.' || event.keyCode === 190) {
-      event.preventDefault();
-  }
-});
-heightInput.addEventListener("keydown", (event) => {
-  if (event.key === '.' || event.keyCode === 190) {
-      event.preventDefault();
-  }
-});
 widthInput.addEventListener("input", () => {
+  let price = 0;
   let inputValue = widthInput.value;
-
+  
+  inputValue = inputValue.replace(/[^\d]/g, '');
   if (Number(inputValue) > 499) {
-      inputValue = inputValue.slice(0, 4);
-      widthInput.value = inputValue;
+    inputValue = inputValue.slice(0, 4);
+    widthInput.value = inputValue;
+
+    // Добавляем стоимость в зависимости от введенного числа
+    const numberValue = Number(inputValue);
+    console.log(numberValue);
+    if (numberValue >= 501) {
+      const additionalCost = (numberValue - 500) / 1;
+      price += Math.round(additionalCost);
+      console.log(price); // Выводим общую стоимость в консоль (замените эту строку на соответствующую логику)
+    }
   }
 
   if (Number(inputValue) <= 499) {
-      error.style.display = "block";
-      errorText[0].style.display = "block"
+    error.style.display = "block";
+    errorText[0].style.display = "block";
   } else {
-      error.style.display = "none";
-      errorText[0].style.display = "none"
+    error.style.display = "none";
+    errorText[0].style.display = "none";
   }
+  fullprice += price; // Обновляем общую стоимость
+  updateFullPrice();
 });
 
 heightInput.addEventListener("input", () => {
   let inputValue = heightInput.value;
-
+  let price = 0;
+  
+  inputValue = inputValue.replace(/[^\d]/g, '');
   if(Number(inputValue) > 499){
     inputValue = inputValue.slice(0, 4);
     heightInput.value = inputValue;
+    
+    const numberValue = Number(inputValue);
+    if (numberValue >= 501) {
+      const additionalCost = (numberValue - 500) / 2;
+      price += Math.round(additionalCost);
+      console.log(price); // Выводим общую стоимость в консоль (замените эту строку на соответствующую логику)
+    }
   }
   if (Number(inputValue) <= 499) {
       error.style.display = "block";
@@ -641,6 +656,32 @@ heightInput.addEventListener("input", () => {
       error.style.display = "none";
       errorText[1].style.display = "none"
   }
+  fullprice += price; // Обновляем общую стоимость
+  updateFullPrice();
+});
+
+widthInput.addEventListener("paste", (event) => {
+  // Очищаем текст от нежелательных символов при вставке
+  const pastedText = (event.clipboardData || window.clipboardData).getData('text');
+  const cleanedText = pastedText.replace(/[^\d]/g, '');
+
+  // Вставляем очищенный текст обратно в поле ввода
+  document.execCommand('insertText', false, cleanedText);
+
+  // Предотвращаем стандартное вставление текста
+  event.preventDefault();
+});
+
+heightInput.addEventListener("paste", (event) => {
+  // Очищаем текст от нежелательных символов при вставке
+  const pastedText = (event.clipboardData || window.clipboardData).getData('text');
+  const cleanedText = pastedText.replace(/[^\d]/g, '');
+
+  // Вставляем очищенный текст обратно в поле ввода
+  document.execCommand('insertText', false, cleanedText);
+
+  // Предотвращаем стандартное вставление текста
+  event.preventDefault();
 });
 
 const updateFullPrice = () => {
@@ -682,13 +723,43 @@ const updateFullPrice = () => {
       updateFullPrice();
     });
   });
-const doubleGlassCheckbox = document.querySelector('input[value="DoubleGlazing"]');
-const secondCustomSelect = document.querySelector('.custom-select-hidden');
 
-doubleGlassCheckbox.addEventListener('change', function() {
+doubleGlassCheckbox.addEventListener('change', () => {
     if (this.checked) {
         secondCustomSelect.classList.remove('custom-select-hidden');
     } else {
         secondCustomSelect.classList.add('custom-select-hidden');
     }
 });
+async function createPdf() {
+  // Create a new PDFDocument
+  const pdfDoc = await PDFDocument.create()
+
+  // Embed the Times Roman font
+  const timesRomanFont = await pdfDoc.embedFont(StandardFonts.TimesRoman)
+
+  // Add a blank page to the document
+  const page = pdfDoc.addPage()
+
+  // Get the width and height of the page
+  const { width, height } = page.getSize()
+
+  // Draw a string of text toward the top of the page
+  const fontSize = 15
+  page.drawText('Если выведет документ  я сосал член у Карева', {
+    x: 50 ,
+    y: height - 4 * fontSize,
+    size: fontSize,
+    font: timesRomanFont,
+    color: rgb(0, 0.53, 0.71),
+  })
+
+  // Serialize the PDFDocument to bytes (a Uint8Array)
+  const pdfBytes = await pdfDoc.save()
+
+  // Trigger the browser to download the PDF document
+  download(pdfBytes, "pdf-lib_creation_example.pdf", "application/pdf");
+}
+getDocumentPDF.addEventListener('click', () => {
+  createPdf();
+})

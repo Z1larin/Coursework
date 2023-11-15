@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./styles/calculate.css">
-    <script src="./calculate.js" defer></script>
+    <script src="./calculate.js" type="module" defer></script>
+    <script src="https://unpkg.com/pdf-lib@1.4.0"></script>
+    <script src="https://unpkg.com/downloadjs@1.4.7"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -228,7 +230,7 @@
                         <div class="grid-parameters">
                             <div class="inputs-parameters">
                                 <p>Ширина, мм</p>
-                                <input class="input" type="number" name="" id="">
+                                <input class="input" type="text" name="" id="">
                                 <div class="error">
                                     <p class="error-text">* Ширина окна не может быть меньше 500мм</p>
                                     <p class="error-text">* Высота окна не может быть меньше 500мм</p>
@@ -236,7 +238,7 @@
                             </div>
                             <div class="inputs-parameters">
                                 <p>Высота, мм</p>
-                                <input class="height-input" type="number" name="" id="">
+                                <input class="height-input" type="text" name="" id="">
                             </div>
                             <div class="inputs-parameters">
                                 <p>Стеклопакет</p>
